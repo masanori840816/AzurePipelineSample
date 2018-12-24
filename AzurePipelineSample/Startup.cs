@@ -26,6 +26,8 @@ namespace AzurePipelineSample
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+            app.UseStatusCodePages();
             app.UseMvc();
         }
     }
