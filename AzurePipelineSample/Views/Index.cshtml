@@ -1,0 +1,66 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using AzurePipelineSample.Models
+@model AzurePipelineSample.Models.User
+
+@functions
+{
+    string message = "default message";
+    async Task<string> UpdateMessageAsync()
+    {
+        await Task.Delay(500);
+        message = "updated";
+        return "hello";
+    }
+
+    async Task<string> GetMessageAsync()
+    {
+        await Task.Delay(500);
+        return "hello";
+    }
+    public void Say() {
+        Console.WriteLine("hello");
+    }
+}
+
+<script type="text/javascript">
+    var clickSample1 = function() {
+        console.log('@message');
+    }
+</script>
+<div>
+    @await UpdateMessageAsync()
+    
+    @{ message = await GetMessageAsync(); }
+</div>
+<button onclick="clickSample1()">Button1</button>
+
+<script type="text/javascript">
+    var clickSample2 = function() {
+        console.log('@message');
+    }
+</script>
+<button onclick="clickSample2()">Button2</button>
+
+
+@foreach (User u in Enumerable.Range(0, 5)
+    .Select(i => new User {ID = i, Name = "User " + i}))
+{
+    
+}
+@foreach (User u in (List<User>)ViewData["SampleUsers"])
+{
+    <table>
+        <tr>
+            <td>ID: </td>
+            <td>@u.ID</td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+            <td>@u.Name</td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td>@u.Description</td>
+        </tr>
+    </table>
+}
