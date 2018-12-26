@@ -4,8 +4,11 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- master
-- features/*
+  batch: true
+  branches:
+    include:
+    - master
+    - features/*
 
 pool:
   vmImage: 'Ubuntu-16.04'
@@ -16,6 +19,7 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- script: echo hello world
 
 pr:
 - master
