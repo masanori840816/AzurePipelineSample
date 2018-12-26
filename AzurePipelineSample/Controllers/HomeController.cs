@@ -22,5 +22,23 @@ namespace AzurePipelineSample.Controllers
                 .ToList();
             return View("/Views/Index.cshtml");
         }
+        [Produces("application/json")]
+        [Route("users/all")]
+        public List<User> GetAllUsers()
+        {
+            return new List<User>
+            {
+                new User
+                {
+                    ID = 0,
+                    Name = "Hello",
+                },
+                new User
+                {
+                    ID = 1,
+                    Name = "World",
+                }
+            };
+        }
     }
 }
