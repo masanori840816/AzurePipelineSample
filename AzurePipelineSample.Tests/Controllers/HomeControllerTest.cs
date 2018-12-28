@@ -25,5 +25,11 @@ namespace AzurePipelineSample.Tests.Controllers
             Assert.NotNull(users);
             Assert.True(users.Count > 0);
         }
+        [Fact]
+        public void GetAllUsers_FailedTestSample()
+        {
+            var users = _controller.GetAllUsers();
+            Assert.Null(users);
+        }
     }
 }
