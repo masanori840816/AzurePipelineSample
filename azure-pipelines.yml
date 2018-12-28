@@ -10,7 +10,6 @@ trigger:
     - master
     - features/*
 
-
 variables:
   buildConfiguration: 'Release'
 
@@ -19,13 +18,11 @@ jobs:
   steps:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: 'dotnet build $(buildConfiguration)'
-  - script: dotnet test
+  - script: dotnet test $(buildConfiguration) --no-build
+    displayName: 'dotnet test $(buildConfiguration)'
   - script: echo hello world after build
   pool:
     vmImage: 'Ubuntu-16.04'
-- job: Message
-  steps:
-  - script: echo hello world
 
 pr:
 - master
