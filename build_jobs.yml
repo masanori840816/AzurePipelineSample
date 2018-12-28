@@ -1,9 +1,14 @@
 parameters:
   buildConfiguration: ''
-  
-steps:
-- script: dotnet build --configuration ${{ parameters.buildConfiguration }}
-  displayName: 'dotnet build ${{ parameters.buildConfiguration }}'
-- script: dotnet test ${{ parameters.buildConfiguration }}
-  displayName: 'dotnet test ${{ parameters.buildConfiguration }}'
-- script: echo hello world after build
+
+jobs:
+- job: Build
+  steps:
+  - script: dotnet build --configuration ${{ parameters.buildConfiguration }}
+    displayName: 'dotnet build ${{ parameters.buildConfiguration }}'
+  - script: dotnet test
+    displayName: 'dotnet test'
+  - script: echo hello world after build
+
+  pool:
+    vmImage: 'Ubuntu-16.04'

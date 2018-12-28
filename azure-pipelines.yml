@@ -13,13 +13,19 @@ trigger:
 variables:
   buildConfiguration: 'Release'
 
-steps:
+jobs:
 - template: build_jobs.yml
   parameters:
     buildConfiguration: $(buildConfiguration)
 
-pool:
-  vmImage: 'Ubuntu-16.04'
+#steps:
+#- template: build_jobs.yml
+#  parameters:
+#    buildConfiguration: $(buildConfiguration)
+
+#pool:
+#  vmImage: 'Ubuntu-16.04'
+
 #jobs:
 #- job: Build
 #  steps:
