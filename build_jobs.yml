@@ -4,6 +4,6 @@ parameters:
 steps:
 - script: dotnet build --configuration ${{ parameters.buildConfiguration }}
   displayName: 'dotnet build ${{ parameters.buildConfiguration }}'
-- script: dotnet test ${{ parameters.buildConfiguration }} --no-build
+- script: dotnet test ${{ parameters.buildConfiguration }}
   displayName: 'dotnet test ${{ parameters.buildConfiguration }}'
 - script: echo hello world after build
