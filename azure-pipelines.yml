@@ -16,6 +16,8 @@ variables:
 steps:
 - template: build_jobs.yml
 
+pool:
+  vmImage: 'Ubuntu-16.04'
 #jobs:
 #- job: Build
 #  steps:
