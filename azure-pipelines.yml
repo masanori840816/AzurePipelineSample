@@ -17,6 +17,11 @@ jobs:
 - template: build_jobs.yml
   parameters:
     buildConfiguration: $(buildConfiguration)
+- job: Merge
+  steps:
+  - script: git_merge.bat
+  pool:
+    vmImage: 'Ubuntu-16.04'
 
 #steps:
 #- template: build_jobs.yml
