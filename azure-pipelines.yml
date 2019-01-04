@@ -13,29 +13,14 @@ trigger:
 variables:
   buildConfiguration: 'Release'
 
-jobs:
-- template: build_jobs.yml
-  parameters:
-    buildConfiguration: $(buildConfiguration)
-
-#steps:
-#- template: build_jobs.yml
-#  parameters:
-#    buildConfiguration: $(buildConfiguration)
-
-#pool:
-#  vmImage: 'Ubuntu-16.04'
-
-#jobs:
-#- job: Build
-#  steps:
-#  - script: dotnet build --configuration $(buildConfiguration)
-#    displayName: 'dotnet build $(buildConfiguration)'
-#  - script: dotnet test $(buildConfiguration) --no-build
-#    displayName: 'dotnet test $(buildConfiguration)'
-#  - script: echo hello world after build
-#  pool:
-#    vmImage: 'Ubuntu-16.04'
+steps:
+  - script: dotnet build --configuration $(buildConfiguration)
+    displayName: 'dotnet build $(buildConfiguration)'
+  - script: dotnet test $(buildConfiguration) --no-build
+    displayName: 'dotnet test $(buildConfiguration)'
+  - script: git_merge.sh
+    displayName: 'git merge'
+  - script: echo hello world after build
 
 pr:
 - master
