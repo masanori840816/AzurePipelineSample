@@ -18,8 +18,9 @@ steps:
     displayName: 'dotnet build $(buildConfiguration)'
   - script: dotnet test
     displayName: 'dotnet test $(buildConfiguration)'
-  - script: git_merge.sh
+  - bash: git_merge.sh
     displayName: 'git merge'
+    failOnStderr: true
   - script: echo hello world after build
 
 pr:
