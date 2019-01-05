@@ -24,6 +24,9 @@ steps:
     displayName: 'git merge'
   - script: echo hello world after build
 
+pool:
+  vmImage: 'VS2017'
+
 pr:
 - master
 - features/*
