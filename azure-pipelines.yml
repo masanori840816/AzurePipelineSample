@@ -25,7 +25,7 @@ steps:
   - script: echo hello world after build
 
 pool:
-  vmImage: 'VS2017'
+  vmImage: 'win1803'
 
 pr:
 - master
