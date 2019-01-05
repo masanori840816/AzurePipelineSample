@@ -18,10 +18,10 @@ steps:
     displayName: 'dotnet build $(buildConfiguration)'
   - script: dotnet test
     displayName: 'dotnet test $(buildConfiguration)'
-  #- task: ShellScript@2
-   # inputs:
-    #  scriptPath: git_merge.sh
-    #displayName: 'git merge'
+  - task: BatchScript@1
+    inputs:
+      filename: git_merge.bat
+    displayName: 'git merge'
   - script: echo hello world after build
 
 pr:
