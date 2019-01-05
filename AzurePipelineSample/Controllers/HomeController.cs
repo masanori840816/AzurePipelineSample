@@ -42,6 +42,11 @@ namespace AzurePipelineSample.Controllers
                 {
                     ID = 2,
                     Name = "!",
+                },
+                new User
+                {
+                    ID = 3,
+                    Name = "!",
                 }
             };
         }
