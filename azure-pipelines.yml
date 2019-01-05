@@ -10,22 +10,19 @@ trigger:
     - master
     - features/*
 
-
 variables:
   buildConfiguration: 'Release'
 
-jobs:
-- job: Build
-  steps:
+steps:
   - script: dotnet build --configuration $(buildConfiguration)
     displayName: 'dotnet build $(buildConfiguration)'
   - script: dotnet test
+    displayName: 'dotnet test $(buildConfiguration)'
+  - task: ShellScript@2
+    inputs:
+      scriptPath: git_merge.sh
+    displayName: 'git merge'
   - script: echo hello world after build
-  pool:
-    vmImage: 'Ubuntu-16.04'
-- job: Message
-  steps:
-  - script: echo hello world
 
 pr:
 - master
